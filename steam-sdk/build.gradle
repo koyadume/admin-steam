@@ -1,0 +1,8 @@
+dependencies {
+	
+	compile project(':steam-sdk')
+	
+	provided 'in.koyad.piston.core:piston-common:2.1',
+			 'org.eclipse.persistence:javax.persistence:2.1.0'
+
+}

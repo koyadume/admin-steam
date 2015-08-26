@@ -1,0 +1,11 @@
+ext	{
+	resFolder = 'admin-steam'
+}
+
+dependencies {
+
+	compile project(':steam-sdk'),
+	
+	provided 'in.koyad.piston.core:piston-ui:2.1'
+
+}
