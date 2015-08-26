@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<app>
+	<name>Steam</name>
+	<title>Steam</title>
+	<resFolder>admin-steam</resFolder>
+	<jsNamespace>steam</jsNamespace>
+</app>
