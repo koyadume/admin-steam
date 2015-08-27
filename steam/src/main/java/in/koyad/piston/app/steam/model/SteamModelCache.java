@@ -7,7 +7,7 @@ import in.koyad.piston.common.exceptions.FrameworkException;
 import in.koyad.piston.common.utils.LoadingMap;
 import in.koyad.piston.common.utils.LoadingMap.Loader;
 import in.koyad.piston.common.utils.LogUtil;
-import in.koyad.piston.core.service.utils.ServiceManager;
+import in.koyad.piston.common.utils.ServiceManager;
 
 public class SteamModelCache {
 	
