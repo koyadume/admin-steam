@@ -18,6 +18,8 @@ package in.koyad.piston.app.steam.model;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 
+import org.koyad.piston.core.model.AbstractEntity;
+
 import lombok.Getter;
 import lombok.Setter;
 
