@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package in.koyad.piston.app.steam.rest.service.impl;
+package in.koyad.piston.app.steam.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import in.koyad.piston.app.steam.model.Document;
-import in.koyad.piston.app.steam.service.api.ContentService;
+import in.koyad.piston.app.steam.sdk.api.ContentService;
 import in.koyad.piston.app.steam.utils.DBConstants;
 import in.koyad.piston.common.exceptions.FrameworkException;
 import in.koyad.piston.common.utils.LogUtil;

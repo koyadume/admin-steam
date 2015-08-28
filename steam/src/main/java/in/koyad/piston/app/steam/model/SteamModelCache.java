@@ -2,7 +2,7 @@ package in.koyad.piston.app.steam.model;
 
 import java.util.Map;
 
-import in.koyad.piston.app.steam.service.api.ContentService;
+import in.koyad.piston.app.steam.sdk.api.ContentService;
 import in.koyad.piston.common.exceptions.FrameworkException;
 import in.koyad.piston.common.utils.LoadingMap;
 import in.koyad.piston.common.utils.LoadingMap.Loader;
