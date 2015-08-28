@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package in.koyad.piston.app.steam.service.api;
+package in.koyad.piston.app.steam.sdk.api;
 
 import in.koyad.piston.common.exceptions.FrameworkException;
 

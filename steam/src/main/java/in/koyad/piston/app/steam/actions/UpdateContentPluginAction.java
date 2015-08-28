@@ -17,7 +17,7 @@ package in.koyad.piston.app.steam.actions;
 
 import in.koyad.piston.app.steam.forms.ContentPluginForm;
 import in.koyad.piston.app.steam.model.SteamModelCache;
-import in.koyad.piston.app.steam.service.api.ContentService;
+import in.koyad.piston.app.steam.sdk.api.ContentService;
 import in.koyad.piston.common.constants.FrameworkConstants;
 import in.koyad.piston.common.constants.MsgType;
 import in.koyad.piston.common.exceptions.FrameworkException;
