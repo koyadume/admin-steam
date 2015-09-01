@@ -1,6 +1,4 @@
-ext	{
-	resFolder = 'admin-steam'
-}
+apply plugin: 'war'
 
 dependencies {
 
@@ -9,3 +7,4 @@ dependencies {
 	provided 'in.koyad.piston.core:piston-ui:2.1'
 
 }
+
