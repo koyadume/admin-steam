@@ -13,13 +13,14 @@ import java.net.URISyntaxException;
 public abstract class AbstractREST {
 	
 	private static final LogUtil LOGGER = LogUtil.getLogger(AbstractREST.class);
+	private final String SERVICE_HOST = "localhost:8080";
 	
 	protected <T> T get(String resource, Class<T> resClass) throws URISyntaxException, FrameworkException {
 		return get(resource, null, resClass);
 	}
 	
 	protected <T> T get(String resource, String query, Class<T> resClass) throws URISyntaxException, FrameworkException {
-		URI uri = new URI("http", "localhost", resource, query, null);
+		URI uri = new URI("http", SERVICE_HOST, resource, query, null);
 		LOGGER.debug("URI : ".concat(uri.toString()));
 		
 		Result result = RestServiceUtil.get(uri);
@@ -30,7 +31,7 @@ public abstract class AbstractREST {
 	}
 	
 	protected void delete(String resource, String query) throws URISyntaxException, FrameworkException {
-		URI uri = new URI("http", "localhost", resource, query, null);
+		URI uri = new URI("http", SERVICE_HOST, resource, query, null);
 		LOGGER.debug("URI : ".concat(uri.toString()));
 		
 		Result result = RestServiceUtil.delete(uri);
@@ -38,7 +39,7 @@ public abstract class AbstractREST {
 	}
 	
 	protected void post(String resource, Object reqBody) throws URISyntaxException, FrameworkException {
-		URI uri = new URI("http", "localhost", resource, null);
+		URI uri = new URI("http", SERVICE_HOST, resource, null);
 		LOGGER.debug("URI : ".concat(uri.toString()));
 		
 		Result result = RestServiceUtil.post(uri, reqBody, RestContants.CONTENT_TYPE_JSON); 
@@ -46,7 +47,7 @@ public abstract class AbstractREST {
 	}
 	
 	protected void put(String resource, Object reqBody) throws URISyntaxException, FrameworkException {
-		URI uri = new URI("http", "localhost", resource, null);
+		URI uri = new URI("http", SERVICE_HOST, resource, null);
 		LOGGER.debug("URI : ".concat(uri.toString()));
 		
 		Result result = RestServiceUtil.put(uri, reqBody, RestContants.CONTENT_TYPE_JSON); 
