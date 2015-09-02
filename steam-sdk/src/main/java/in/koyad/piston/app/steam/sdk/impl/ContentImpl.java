@@ -20,6 +20,7 @@ import java.text.MessageFormat;
 
 import in.koyad.piston.app.steam.sdk.api.ContentService;
 import in.koyad.piston.common.exceptions.FrameworkException;
+import in.koyad.piston.common.utils.AbstractREST;
 import in.koyad.piston.common.utils.LogUtil;
 
 public class ContentImpl extends AbstractREST implements ContentService {
@@ -31,7 +32,7 @@ public class ContentImpl extends AbstractREST implements ContentService {
 		LOGGER.enterMethod("updateContent");
 		
 		try {
-			String resource = MessageFormat.format("/steam-service/v1/content/{tileId}", tileId);
+			String resource = MessageFormat.format("/steam-service/{0}/content/{1}", ServiceConstants.VERSION, tileId);
 			put(resource, content);
 		} catch(URISyntaxException ex) {
 			LOGGER.logException(ex);
@@ -46,7 +47,7 @@ public class ContentImpl extends AbstractREST implements ContentService {
 		
 		String content = null;
 		try {
-			String resource = MessageFormat.format("/steam-service/v1/content/{tileId}", tileId);
+			String resource = MessageFormat.format("/steam-service/{0}/content/{1}", ServiceConstants.VERSION, tileId);
 			content = get(resource, String.class);
 		} catch(URISyntaxException ex) {
 			LOGGER.logException(ex);
