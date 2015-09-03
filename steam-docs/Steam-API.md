@@ -1,6 +1,6 @@
 # Context root
 ```
-/steam-service/v1
+/steam-service/v1.0
 ```
 
 ### Get tile content

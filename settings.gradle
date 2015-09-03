@@ -1,3 +1,4 @@
-include 'steam-sdk', 
+include 'steam-sdk',
+		'steam-sdk-impl', 
 		'steam-service',
 		'steam'
