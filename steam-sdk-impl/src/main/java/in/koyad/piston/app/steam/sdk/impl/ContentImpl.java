@@ -34,8 +34,9 @@ public class ContentImpl extends AbstractREST implements ContentService {
 		try {
 			String resource = MessageFormat.format("/steam-service/{0}/content/{1}", ServiceConstants.VERSION, tileId);
 			put(resource, content);
-		} catch(URISyntaxException ex) {
+		} catch(Exception ex) {
 			LOGGER.logException(ex);
+			throw new FrameworkException(ex.getMessage());
 		}
 		
 		LOGGER.exitMethod("updateContent");
@@ -49,8 +50,9 @@ public class ContentImpl extends AbstractREST implements ContentService {
 		try {
 			String resource = MessageFormat.format("/steam-service/{0}/content/{1}", ServiceConstants.VERSION, tileId);
 			content = get(resource, String.class);
-		} catch(URISyntaxException ex) {
+		} catch(Exception ex) {
 			LOGGER.logException(ex);
+			throw new FrameworkException(ex.getMessage());
 		}
 		
 		LOGGER.exitMethod("getContent");
