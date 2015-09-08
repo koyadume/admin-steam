@@ -2,7 +2,7 @@ apply plugin: 'war'
 
 dependencies {
 
-	compile project(':steam-sdk-impl')
+	compile project(':steam-sdk')
 	
 	provided 'in.koyad.piston.core:piston-ui:2.x'
 

@@ -3,15 +3,15 @@ package in.koyad.piston.app.steam.model;
 import java.util.Map;
 
 import in.koyad.piston.app.steam.sdk.api.ContentService;
+import in.koyad.piston.app.steam.sdk.impl.ContentImpl;
 import in.koyad.piston.common.exceptions.FrameworkException;
 import in.koyad.piston.common.utils.LoadingMap;
 import in.koyad.piston.common.utils.LoadingMap.Loader;
 import in.koyad.piston.common.utils.LogUtil;
-import in.koyad.piston.common.utils.ServiceManager;
 
 public class SteamModelCache {
 	
-	private static final ContentService contentService = ServiceManager.getService(ContentService.class);
+	private static final ContentService contentService = new ContentImpl();
 	
 	private static final LogUtil LOGGER = LogUtil.getLogger(SteamModelCache.class);
 	
