@@ -18,12 +18,12 @@ package in.koyad.piston.app.steam.actions;
 import in.koyad.piston.app.steam.forms.ContentPluginForm;
 import in.koyad.piston.app.steam.model.SteamModelCache;
 import in.koyad.piston.app.steam.sdk.api.ContentService;
+import in.koyad.piston.app.steam.sdk.impl.ContentImpl;
 import in.koyad.piston.common.constants.FrameworkConstants;
 import in.koyad.piston.common.constants.MsgType;
 import in.koyad.piston.common.exceptions.FrameworkException;
 import in.koyad.piston.common.utils.LogUtil;
 import in.koyad.piston.common.utils.Message;
-import in.koyad.piston.common.utils.ServiceManager;
 import in.koyad.piston.controller.plugin.PluginAction;
 import in.koyad.piston.controller.plugin.annotations.AnnoPluginAction;
 import in.koyad.piston.ui.utils.FormUtils;
@@ -37,7 +37,7 @@ public class UpdateContentPluginAction extends PluginAction {
 	
 	public static final String ACTION_NAME = "updateContent";
 	
-	private final ContentService contentService = ServiceManager.getService(ContentService.class);
+	private final ContentService contentService = new ContentImpl();
 
 	private static final LogUtil LOGGER = LogUtil.getLogger(UpdateContentPluginAction.class);
 	

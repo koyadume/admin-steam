@@ -15,6 +15,8 @@
  */
 package in.koyad.piston.app.steam.actions;
 
+import com.google.common.html.HtmlEscapers;
+
 import in.koyad.piston.app.steam.model.SteamModelCache;
 import in.koyad.piston.common.exceptions.FrameworkException;
 import in.koyad.piston.common.utils.LogUtil;
@@ -22,8 +24,6 @@ import in.koyad.piston.controller.plugin.PluginAction;
 import in.koyad.piston.controller.plugin.annotations.AnnoPluginAction;
 import in.koyad.piston.ui.utils.RequestContextUtil;
 import in.koyad.piston.ui.utils.TileUtil;
-
-import com.google.common.html.HtmlEscapers;
 
 @AnnoPluginAction(
 	name = GetContentPluginAction.ACTION_NAME
@@ -37,6 +37,15 @@ public class GetContentPluginAction extends PluginAction {
 	@Override
 	protected String execute() throws FrameworkException {
 		LOGGER.enterMethod("execute");
+		
+		System.out.println("Test code ..");
+		
+		try {
+			ClassLoader loader = this.getClass().getClassLoader();
+			loader.loadClass("in.koyad.piston.app.steam.sdk.api.ContentService");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		String content = SteamModelCache.contents.get(TileUtil.getTileId());
 		RequestContextUtil.setRequestAttribute("content", HtmlEscapers.htmlEscaper().escape(content));
