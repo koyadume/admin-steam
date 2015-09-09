@@ -9,16 +9,16 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import in.koyad.piston.app.steam.sdk.api.ContentService;
+import in.koyad.piston.app.steam.service.impl.ContentServiceImpl;
 import in.koyad.piston.common.exceptions.FrameworkException;
 import in.koyad.piston.common.utils.LogUtil;
-import in.koyad.piston.common.utils.ServiceManager;
 
 @Path("/content")
 public class ContentResource {
 	
 	private static final LogUtil LOGGER = LogUtil.getLogger(ContentResource.class);
 
-	private static final ContentService contentService = ServiceManager.getService(ContentService.class);
+	private static final ContentService contentService = new ContentServiceImpl();
 	
 	@PUT
 	@Path("{tileId}")
