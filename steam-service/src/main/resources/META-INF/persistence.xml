@@ -8,6 +8,7 @@
 	<persistence-unit name="steam" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<non-jta-data-source>java:comp/env/jdbc/steam</non-jta-data-source>
+		<class>in.koyad.piston.app.steam.model.Document</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			<property name="hibernate.cache.use_second_level_cache" value="false" />
