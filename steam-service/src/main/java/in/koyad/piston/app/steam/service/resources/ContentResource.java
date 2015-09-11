@@ -28,18 +28,18 @@ public class ContentResource {
 		
 		contentService.updateContent(tileId, content);
 		
-		LOGGER.exitMethod("searchUsers");
+		LOGGER.exitMethod("updateContent");
 	}
 	
 	@GET
 	@Path("{tileId}")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getContent(@PathParam("tileId") String tileId) throws FrameworkException {
-		LOGGER.enterMethod("updateContent");
+		LOGGER.enterMethod("getContent");
 		
 		String content = contentService.getContent(tileId);
 		
-		LOGGER.exitMethod("searchUsers");
+		LOGGER.exitMethod("getContent");
 		return content;
 	}
 	

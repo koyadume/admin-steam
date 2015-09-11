@@ -38,15 +38,6 @@ public class GetContentPluginAction extends PluginAction {
 	protected String execute() throws FrameworkException {
 		LOGGER.enterMethod("execute");
 		
-		System.out.println("Test code ..");
-		
-		try {
-			ClassLoader loader = this.getClass().getClassLoader();
-			loader.loadClass("in.koyad.piston.app.steam.sdk.api.ContentService");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
 		String content = SteamModelCache.contents.get(TileUtil.getTileId());
 		RequestContextUtil.setRequestAttribute("content", HtmlEscapers.htmlEscaper().escape(content));
 		

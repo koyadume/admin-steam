@@ -15,11 +15,12 @@
  */
 package in.koyad.piston.app.steam.plugins;
 
+import in.koyad.piston.app.steam.actions.GetContentPluginAction;
 import in.koyad.piston.common.utils.LogUtil;
 import in.koyad.piston.controller.plugin.Plugin;
 import in.koyad.piston.controller.plugin.annotations.AnnoPlugin;
 
-@AnnoPlugin(name = "content", title = "Content", defaultAction = "getContent")
+@AnnoPlugin(name = "content", title = "Content", defaultAction = GetContentPluginAction.ACTION_NAME)
 public class ContentPlugin extends Plugin {
 
 	private static final LogUtil LOGGER = LogUtil

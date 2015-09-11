@@ -15,8 +15,9 @@
  */
 package in.koyad.piston.app.steam.sdk.impl;
 
-import java.net.URISyntaxException;
 import java.text.MessageFormat;
+
+import javax.ws.rs.core.MediaType;
 
 import in.koyad.piston.app.steam.sdk.api.ContentService;
 import in.koyad.piston.common.exceptions.FrameworkException;
@@ -33,7 +34,7 @@ public class ContentImpl extends AbstractREST implements ContentService {
 		
 		try {
 			String resource = MessageFormat.format("/steam-service/{0}/content/{1}", ServiceConstants.VERSION, tileId);
-			put(resource, content);
+			put(resource, content, MediaType.TEXT_PLAIN);
 		} catch(Exception ex) {
 			LOGGER.logException(ex);
 			throw new FrameworkException(ex.getMessage());
