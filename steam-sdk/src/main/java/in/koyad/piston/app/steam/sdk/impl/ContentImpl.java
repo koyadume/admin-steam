@@ -17,6 +17,8 @@ package in.koyad.piston.app.steam.sdk.impl;
 
 import java.text.MessageFormat;
 
+import javax.ws.rs.core.MediaType;
+
 import in.koyad.piston.app.steam.sdk.api.ContentService;
 import in.koyad.piston.common.exceptions.FrameworkException;
 import in.koyad.piston.common.utils.AbstractREST;
@@ -41,6 +43,7 @@ public class ContentImpl extends AbstractREST implements ContentService {
 			getClient()
 				.resource(ROOT_RESOURCE)
 				.path(tileId)
+				.type(MediaType.TEXT_PLAIN)
 				.put(content);
 		} catch(Exception ex) {
 			LOGGER.logException(ex);
