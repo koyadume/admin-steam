@@ -17,8 +17,6 @@ package in.koyad.piston.app.steam.sdk.impl;
 
 import java.text.MessageFormat;
 
-import javax.ws.rs.core.MediaType;
-
 import in.koyad.piston.app.steam.sdk.api.ContentService;
 import in.koyad.piston.common.exceptions.FrameworkException;
 import in.koyad.piston.common.utils.AbstractREST;
@@ -27,14 +25,23 @@ import in.koyad.piston.common.utils.LogUtil;
 public class ContentImpl extends AbstractREST implements ContentService {
 	
 	private static final LogUtil LOGGER = LogUtil.getLogger(ContentImpl.class);
+	
+	private static final String ROOT_RESOURCE = MessageFormat.format("http://{0}/steam-service/{1}/content", 
+														SERVICE_HOST.concat(":").concat(String.valueOf(SERVICE_PORT)),
+														ServiceConstants.VERSION);
 
 	@Override
 	public void updateContent(String tileId, String content) throws FrameworkException {
 		LOGGER.enterMethod("updateContent");
 		
 		try {
-			String resource = MessageFormat.format("/steam-service/{0}/content/{1}", ServiceConstants.VERSION, tileId);
-			put(resource, content, MediaType.TEXT_PLAIN);
+//			String resource = MessageFormat.format("/steam-service/{0}/content/{1}", ServiceConstants.VERSION, tileId);
+//			put(resource, content, MediaType.TEXT_PLAIN);
+			
+			getClient()
+				.resource(ROOT_RESOURCE)
+				.path(tileId)
+				.put(content);
 		} catch(Exception ex) {
 			LOGGER.logException(ex);
 			throw new FrameworkException(ex.getMessage());
@@ -49,8 +56,13 @@ public class ContentImpl extends AbstractREST implements ContentService {
 		
 		String content = null;
 		try {
-			String resource = MessageFormat.format("/steam-service/{0}/content/{1}", ServiceConstants.VERSION, tileId);
-			content = get(resource, String.class);
+//			String resource = MessageFormat.format("/steam-service/{0}/content/{1}", ServiceConstants.VERSION, tileId);
+//			content = get(resource, String.class);
+			
+			content = getClient()
+						.resource(ROOT_RESOURCE)
+						.path(tileId)
+						.get(String.class);
 		} catch(Exception ex) {
 			LOGGER.logException(ex);
 			throw new FrameworkException(ex.getMessage());
