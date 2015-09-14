@@ -13,23 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package in.koyad.piston.app.steam.model;
+package in.koyad.piston.app.steam.sdk.model;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-
-import org.koyad.piston.core.model.AbstractEntity;
+import javax.persistence.Embeddable;
+import javax.persistence.Transient;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+@Embeddable
 @Getter @Setter
-public class Document extends AbstractEntity {
+public class DocumentMetadata {
 	
-	public static final String COL_CONTENT = "content";
-	
-	@Embedded
-	private DocumentMetadata metadata;
+	@Transient
+	private String path;
 	
 }

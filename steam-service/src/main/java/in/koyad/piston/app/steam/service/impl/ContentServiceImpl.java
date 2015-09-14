@@ -19,8 +19,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import in.koyad.piston.app.steam.model.Document;
 import in.koyad.piston.app.steam.sdk.api.ContentService;
+import in.koyad.piston.app.steam.sdk.model.Document;
 import in.koyad.piston.app.steam.utils.DBConstants;
 import in.koyad.piston.common.exceptions.FrameworkException;
 import in.koyad.piston.common.utils.LogUtil;
