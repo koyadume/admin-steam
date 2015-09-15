@@ -17,12 +17,14 @@ package in.koyad.piston.app.steam.sdk.impl;
 
 import java.text.MessageFormat;
 
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 
 import in.koyad.piston.app.steam.sdk.api.ContentService;
 import in.koyad.piston.common.exceptions.FrameworkException;
 import in.koyad.piston.common.utils.AbstractREST;
 import in.koyad.piston.common.utils.LogUtil;
+import in.koyad.piston.common.utils.RestServiceUtil;
 
 public class ContentImpl extends AbstractREST implements ContentService {
 	
@@ -40,11 +42,11 @@ public class ContentImpl extends AbstractREST implements ContentService {
 //			String resource = MessageFormat.format("/steam-service/{0}/content/{1}", ServiceConstants.VERSION, tileId);
 //			put(resource, content, MediaType.TEXT_PLAIN);
 			
-			getClient()
-				.resource(ROOT_RESOURCE)
+			RestServiceUtil.getClient()
+				.target(ROOT_RESOURCE)
 				.path(tileId)
-				.type(MediaType.TEXT_PLAIN)
-				.put(content);
+				.request()
+				.put(Entity.text(content));
 		} catch(Exception ex) {
 			LOGGER.logException(ex);
 			throw new FrameworkException(ex.getMessage());
@@ -62,9 +64,10 @@ public class ContentImpl extends AbstractREST implements ContentService {
 //			String resource = MessageFormat.format("/steam-service/{0}/content/{1}", ServiceConstants.VERSION, tileId);
 //			content = get(resource, String.class);
 			
-			content = getClient()
-						.resource(ROOT_RESOURCE)
+			content = RestServiceUtil.getClient()
+						.target(ROOT_RESOURCE)
 						.path(tileId)
+						.request()
 						.get(String.class);
 		} catch(Exception ex) {
 			LOGGER.logException(ex);
