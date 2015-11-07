@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/steam-service">
+<Context path="/steam-service" processTlds="false">
 	<ResourceLink name="jdbc/steam" global="jdbc/steam" type="javax.sql.DataSource" />
 </Context>
