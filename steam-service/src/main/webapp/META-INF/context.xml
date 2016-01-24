@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/steam-service" processTlds="false">
+<Context path="/steam-service">
 	<ResourceLink name="jdbc/steam" global="jdbc/steam" type="javax.sql.DataSource" />
+	<JarScanner>
+    	<JarScanFilter defaultTldScan="false" defaultPluggabilityScan="false" />
+  	</JarScanner>
 </Context>
