@@ -15,6 +15,9 @@
  */
 package in.koyad.piston.app.steam.service.listener;
 
+import java.text.MessageFormat;
+import java.util.Calendar;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -39,11 +42,16 @@ public class SteamServiceContextListener implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
 		LOGGER.enterMethod("contextInitialized");
+		
+		long start = Calendar.getInstance().getTimeInMillis();
 			
 		//initialize JPA EntityManagerFactory
 		JPAEMFactory.initialize(Joiner.on(',').join(new String[]{
 														DBConstants.PERSISTENT_UNIT_STEAM
 													}));
+		
+		long end = Calendar.getInstance().getTimeInMillis();
+		LOGGER.info(MessageFormat.format("PERFORMANCE : Initialization time : {0}ms", (end - start)));
 		
 		LOGGER.exitMethod("contextInitialized");
 	}
