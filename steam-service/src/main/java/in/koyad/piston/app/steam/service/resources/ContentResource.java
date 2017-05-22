@@ -15,6 +15,10 @@
  */
 package in.koyad.piston.app.steam.service.resources;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
@@ -23,28 +27,17 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import in.koyad.piston.app.steam.sdk.api.ContentService;
-import in.koyad.piston.app.steam.service.impl.ContentServiceImpl;
-import in.koyad.piston.common.exceptions.FrameworkException;
-import in.koyad.piston.common.utils.LogUtil;
+import in.koyad.piston.app.steam.service.model.Document;
+import in.koyad.piston.app.steam.utils.DBConstants;
+import in.koyad.piston.common.basic.exception.FrameworkException;
+import in.koyad.piston.common.util.LogUtil;
+import in.koyad.piston.dao.GlobalDAO;
 
-@Path("/content")
 public class ContentResource {
 	
 	private static final LogUtil LOGGER = LogUtil.getLogger(ContentResource.class);
 
-	private static final ContentService contentService = new ContentServiceImpl();
-	
-	@PUT
-	@Path("{tileId}")
-	@Consumes(MediaType.TEXT_PLAIN)
-	public void updateContent(@PathParam("tileId") String tileId, String content) throws FrameworkException {
-		LOGGER.enterMethod("updateContent");
-		
-		contentService.updateContent(tileId, content);
-		
-		LOGGER.exitMethod("updateContent");
-	}
+	private final GlobalDAO globalDAO = new GlobalDAO(DBConstants.PERSISTENT_UNIT_STEAM);
 	
 	@GET
 	@Path("{tileId}")
@@ -52,10 +45,36 @@ public class ContentResource {
 	public String getContent(@PathParam("tileId") String tileId) throws FrameworkException {
 		LOGGER.enterMethod("getContent");
 		
-		String content = contentService.getContent(tileId);
+		Map<String, Object> conditions = new HashMap<>();
+		conditions.put("id", tileId);
+		
+		List values = globalDAO.getSingleColValues(Document.class, Document.COL_CONTENT, conditions);
+		if(values.size() > 0) {
+			return (String)values.get(0);
+		}
 		
 		LOGGER.exitMethod("getContent");
-		return content;
+		return "";
+	}
+	
+	@PUT
+	@Path("{tileId}")
+	@Consumes(MediaType.TEXT_PLAIN)
+	public void updateContent(@PathParam("tileId") String tileId, String content) throws FrameworkException {
+		LOGGER.enterMethod("updateContent");
+		
+		Map<String, Object> conditions = new HashMap<>();
+		conditions.put("id", tileId);
+		
+		if(null == globalDAO.get(Document.class, tileId)) {
+			Document document = new Document();
+			document.setId(tileId);
+			globalDAO.insert(document);
+		}
+
+		globalDAO.updateSingleColumn(Document.class, Document.COL_CONTENT, content, conditions);
+		
+		LOGGER.exitMethod("updateContent");
 	}
 	
 }

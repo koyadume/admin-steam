@@ -2,8 +2,8 @@ apply plugin: 'war'
 
 dependencies {
 
-	compile project(':steam-sdk')
+	compile project(':steam-client')
 	
-	provided "in.koyad.piston.core:piston-ui:$pistonVersion"
+	provided "in.mechcloud.piston.core:piston-ui:$pistonCoreVersion"
 
 }

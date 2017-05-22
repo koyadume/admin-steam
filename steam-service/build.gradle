@@ -1,9 +1,7 @@
 apply plugin: 'war'
 
 dependencies {  
-    compile project(':steam-sdk'),
-    		"in.koyad.piston.core:piston-dao:$pistonVersion",
-    		"in.koyad.piston.core:piston-sdk:$pistonVersion",
+    compile "in.mechcloud.piston.share:piston-dao:$pistonShareVersion",
     		"org.glassfish.jersey.containers:jersey-container-servlet:$jerseyVersion"
 
     runtime "org.hibernate:hibernate-entitymanager:$hibernateVersion"

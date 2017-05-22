@@ -15,16 +15,15 @@
  */
 package in.koyad.piston.app.steam.plugins;
 
+import in.koyad.piston.app.api.annotation.AnnoPlugin;
+import in.koyad.piston.app.api.plugin.BasePlugin;
 import in.koyad.piston.app.steam.actions.GetBootstrapContentPluginAction;
-import in.koyad.piston.common.utils.LogUtil;
-import in.koyad.piston.controller.plugin.Plugin;
-import in.koyad.piston.controller.plugin.annotations.AnnoPlugin;
+import in.koyad.piston.common.util.LogUtil;
 
 @AnnoPlugin(name = "bootstrap", title = "Bootstrap", defaultAction = GetBootstrapContentPluginAction.ACTION_NAME)
-public class BootstrapPlugin extends Plugin {
+public class BootstrapPlugin extends BasePlugin {
 
-	private static final LogUtil LOGGER = LogUtil
-			.getLogger(BootstrapPlugin.class);
+	private static final LogUtil LOGGER = LogUtil.getLogger(BootstrapPlugin.class);
 	
 	@Override
 	public void preProcess() {

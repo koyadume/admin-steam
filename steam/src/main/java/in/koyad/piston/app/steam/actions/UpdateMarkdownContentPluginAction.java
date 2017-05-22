@@ -15,52 +15,50 @@
  */
 package in.koyad.piston.app.steam.actions;
 
+import in.koyad.piston.app.api.annotation.AnnoPluginAction;
+import in.koyad.piston.app.api.model.Request;
+import in.koyad.piston.app.api.plugin.BasePluginAction;
 import in.koyad.piston.app.steam.forms.ContentPluginForm;
 import in.koyad.piston.app.steam.model.SteamModelCache;
-import in.koyad.piston.app.steam.sdk.api.ContentService;
-import in.koyad.piston.app.steam.sdk.impl.ContentImpl;
-import in.koyad.piston.common.constants.FrameworkConstants;
+import in.koyad.piston.app.steam.sdk.api.ContentClient;
+import in.koyad.piston.app.steam.sdk.impl.ContentClientImpl;
+import in.koyad.piston.common.basic.exception.FrameworkException;
 import in.koyad.piston.common.constants.MsgType;
-import in.koyad.piston.common.exceptions.FrameworkException;
-import in.koyad.piston.common.utils.LogUtil;
-import in.koyad.piston.common.utils.Message;
-import in.koyad.piston.controller.plugin.PluginAction;
-import in.koyad.piston.controller.plugin.annotations.AnnoPluginAction;
-import in.koyad.piston.ui.utils.FormUtils;
-import in.koyad.piston.ui.utils.RequestContextUtil;
+import in.koyad.piston.common.util.LogUtil;
+import in.koyad.piston.common.util.Message;
 import in.koyad.piston.ui.utils.RequestDispatcher;
 import in.koyad.piston.ui.utils.TileUtil;
 
 @AnnoPluginAction(
 	name = UpdateMarkdownContentPluginAction.ACTION_NAME
 )
-public class UpdateMarkdownContentPluginAction extends PluginAction {
+public class UpdateMarkdownContentPluginAction extends BasePluginAction {
 	
 	public static final String ACTION_NAME = "updateContent";
 	
-	private final ContentService contentService = new ContentImpl();
+	private final ContentClient contentService = new ContentClientImpl();
 
 	private static final LogUtil LOGGER = LogUtil.getLogger(UpdateMarkdownContentPluginAction.class);
 	
 	@Override
-	protected String execute() throws FrameworkException {
+	public String execute(Request req) throws FrameworkException {
 		LOGGER.enterMethod("execute");
 
 		ContentPluginForm form = null;
 		try {
-			form = FormUtils.createFormWithReqParams(ContentPluginForm.class);
+			form = req.getPluginForm(ContentPluginForm.class);
 			contentService.updateContent(TileUtil.getTileId(), form.getContent());
 			
 			//clear cache
 			SteamModelCache.contents.remove(TileUtil.getTileId());
 			
-			RequestContextUtil.setRequestAttribute("msg", new Message(MsgType.INFO, "Content updated successfully."));
+			req.setAttribute("msg", new Message(MsgType.INFO, "Content updated successfully."));
 		} catch(FrameworkException ex) {
 			LOGGER.logException(ex);
-			RequestContextUtil.setRequestAttribute("msg", new Message(MsgType.ERROR, "Error occured while updating site details."));
+			req.setAttribute("msg", new Message(MsgType.ERROR, "Error occured while updating site details."));
 		}
 		
-		RequestContextUtil.setRequestAttribute(ContentPluginForm.FORM_NAME, form);
+		req.setAttribute(ContentPluginForm.FORM_NAME, form);
 		
 		LOGGER.exitMethod("execute");
 //		return "/pages/content.xml";

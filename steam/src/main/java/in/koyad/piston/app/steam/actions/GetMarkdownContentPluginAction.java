@@ -17,29 +17,29 @@ package in.koyad.piston.app.steam.actions;
 
 import com.google.common.html.HtmlEscapers;
 
+import in.koyad.piston.app.api.annotation.AnnoPluginAction;
+import in.koyad.piston.app.api.model.Request;
+import in.koyad.piston.app.api.plugin.BasePluginAction;
 import in.koyad.piston.app.steam.model.SteamModelCache;
-import in.koyad.piston.common.exceptions.FrameworkException;
-import in.koyad.piston.common.utils.LogUtil;
-import in.koyad.piston.controller.plugin.PluginAction;
-import in.koyad.piston.controller.plugin.annotations.AnnoPluginAction;
-import in.koyad.piston.ui.utils.RequestContextUtil;
+import in.koyad.piston.common.basic.exception.FrameworkException;
+import in.koyad.piston.common.util.LogUtil;
 import in.koyad.piston.ui.utils.TileUtil;
 
 @AnnoPluginAction(
 	name = GetMarkdownContentPluginAction.ACTION_NAME
 )
-public class GetMarkdownContentPluginAction extends PluginAction {
+public class GetMarkdownContentPluginAction extends BasePluginAction {
 	
 	public static final String ACTION_NAME = "getMarkdownContent";
 	
 	private static final LogUtil LOGGER = LogUtil.getLogger(GetMarkdownContentPluginAction.class);
 	
 	@Override
-	protected String execute() throws FrameworkException {
+	public String execute(Request req) throws FrameworkException {
 		LOGGER.enterMethod("execute");
 		
 		String content = SteamModelCache.contents.get(TileUtil.getTileId());
-		RequestContextUtil.setRequestAttribute("content", HtmlEscapers.htmlEscaper().escape(content));
+		req.setAttribute("content", HtmlEscapers.htmlEscaper().escape(content));
 		
 		LOGGER.exitMethod("execute");
 		return "/pages/markdownContent.xml";
