@@ -1,0 +1,5 @@
+dependencies {
+	
+	provided "in.mechcloud.piston.share:piston-common:$pistonShareVersion" 
+			 
+}
