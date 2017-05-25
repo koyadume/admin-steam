@@ -33,7 +33,7 @@ public class ContentClientImpl extends AbstractREST implements ContentClient {
 //														SERVICE_HOST.concat(":").concat(String.valueOf(SERVICE_PORT)),
 //														ServiceConstants.VERSION);
 	
-	private static final String ROOT_RESOURCE = MessageFormat.format("{0}/steam-service/v1.0", 
+	private static final String ROOT_RESOURCE = MessageFormat.format("{0}/steam-service/v3.0", 
 											System.getenv(ClientConstants.HOST_STEAM_SERVICE));
 
 	@Override
@@ -68,7 +68,7 @@ public class ContentClientImpl extends AbstractREST implements ContentClient {
 			
 			content = RestServiceUtil.getClient()
 						.target(ROOT_RESOURCE)
-						.path(tileId)
+						.path("content").path(tileId)
 						.request()
 						.get(String.class);
 		} catch(Exception ex) {

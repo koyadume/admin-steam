@@ -28,16 +28,24 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import in.koyad.piston.app.steam.service.model.Document;
-import in.koyad.piston.app.steam.utils.DBConstants;
+import in.koyad.piston.app.steam.service.utils.DBConstants;
 import in.koyad.piston.common.basic.exception.FrameworkException;
 import in.koyad.piston.common.util.LogUtil;
 import in.koyad.piston.dao.GlobalDAO;
 
+@Path("content")
 public class ContentResource {
 	
 	private static final LogUtil LOGGER = LogUtil.getLogger(ContentResource.class);
 
 	private final GlobalDAO globalDAO = new GlobalDAO(DBConstants.PERSISTENT_UNIT_STEAM);
+	
+	@GET
+	@Path("hello/{msg}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String test(@PathParam("msg") String msg) throws FrameworkException {
+		return "hello ".concat(msg);	
+	}
 	
 	@GET
 	@Path("{tileId}")

@@ -24,7 +24,7 @@ import javax.servlet.annotation.WebListener;
 
 import com.google.common.base.Joiner;
 
-import in.koyad.piston.app.steam.utils.DBConstants;
+import in.koyad.piston.app.steam.service.utils.DBConstants;
 import in.koyad.piston.common.util.LogUtil;
 import in.koyad.piston.core.dao.utils.JPAEMFactory;
 
