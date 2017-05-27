@@ -42,7 +42,7 @@ public class GetBootstrapContentPluginAction extends BasePluginAction {
 		req.setAttribute("content", HtmlEscapers.htmlEscaper().escape(content));
 		
 		LOGGER.exitMethod("execute");
-		return "/pages/bootstrapContent.xml";
+		return "/bootstrapContent.xml";
 	}
 	
 }

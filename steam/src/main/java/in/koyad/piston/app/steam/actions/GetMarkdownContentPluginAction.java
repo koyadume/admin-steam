@@ -42,7 +42,7 @@ public class GetMarkdownContentPluginAction extends BasePluginAction {
 		req.setAttribute("content", HtmlEscapers.htmlEscaper().escape(content));
 		
 		LOGGER.exitMethod("execute");
-		return "/pages/markdownContent.xml";
+		return "/markdownContent.xml";
 	}
 	
 }

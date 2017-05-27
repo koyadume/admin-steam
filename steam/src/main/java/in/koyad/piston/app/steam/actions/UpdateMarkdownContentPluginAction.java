@@ -61,7 +61,7 @@ public class UpdateMarkdownContentPluginAction extends BasePluginAction {
 		req.setAttribute(ContentPluginForm.FORM_NAME, form);
 		
 		LOGGER.exitMethod("execute");
-//		return "/pages/content.xml";
+//		return "/content.xml";
 //		return FrameworkConstants.PREFIX_FORWARD + GetMarkdownContentPluginAction.ACTION_NAME;
 		return RequestDispatcher.forwardAction(GetMarkdownContentPluginAction.ACTION_NAME);
 	}

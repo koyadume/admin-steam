@@ -61,7 +61,7 @@ public class UpdateBootstrapContentPluginAction extends BasePluginAction {
 		req.setAttribute(ContentPluginForm.FORM_NAME, form);
 		
 		LOGGER.exitMethod("execute");
-//		return "/pages/content.xml";
+//		return "/content.xml";
 		return RequestDispatcher.forwardAction(GetBootstrapContentPluginAction.ACTION_NAME);
 //		return FrameworkConstants.PREFIX_FORWARD + GetMarkdownContentPluginAction.ACTION_NAME;
 	}
