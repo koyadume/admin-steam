@@ -46,7 +46,7 @@ public class ContentClientImpl extends AbstractREST implements ContentClient {
 			
 			RestServiceUtil.getClient()
 				.target(ROOT_RESOURCE)
-				.path(tileId)
+				.path("content").path(tileId)
 				.request()
 				.put(Entity.text(content));
 		} catch(Exception ex) {

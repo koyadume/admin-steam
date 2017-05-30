@@ -37,15 +37,7 @@
 		        	<textarea property="content" style="min-height: 200px; max-height: 400px; width: 100%; font-size: 14px; font-family: Arial;" />
 		        	
 		        	<div style="text-align: right; margin-top: 20px;">
-				        <!--
-				        <pButton class="pt-btn pseudo-submit-button" faClass="fa fa-save fa-lg" faStyle="font-size: 1.2em; padding-right: 6px;"> 
-							<c:out value="Update" />
-			  			</pButton>
-			  			<pButton class="pt-btn pseudo-cancel-btn" faClass="fa fa-close fa-lg" faStyle="font-size: 1.2em;  padding-right: 6px;"> 
-							<c:out value="Cancel" />
-			  			</pButton>
-			  			  -->
-			  			<button type="button" class="btn btn-default pseudo-submit-button">
+				        <button type="button" class="btn btn-default pseudo-submit-button">
 			  				<span style="font-size: 1.2em; padding-right: 6px;" class="fa fa-save fa-lg"></span>
 			  				<c:out value="Update" />
 			  			</button>
