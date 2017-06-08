@@ -18,7 +18,7 @@
 	    <div style="position: relative; min-height: 100px;">
 	    	<plugin:hasPermission res="PAGE" permission="EDIT">
 	    		<div class="pseudo-edit-btn pt-round-btn" style="position: absolute; top: 10px; right: 10px; z-index: 2;" >
-				   <span class="fa fa-pencil fa-lg" style="font-size: 1.2em; margin-top: 0.7em;"></span>
+				   <span class="fa fa-pencil fa-lg" style="font-size: 1.3em; margin-top: 0.6em;"></span>
 				</div>
 				<!-- 
 				<div style="text-align: right; margin-bottom: 10px;">
@@ -52,8 +52,10 @@
 	    
 	    <script type="text/javascript">
 	    	<![CDATA[
-	    		${app_js_namespace}.tiles.push('${piston_tile_id}');
-				invoke('${app_js_namespace}.renderMarkdown', window, '${piston_tile_id}');
+	    		$(function() {
+		    		${app_js_namespace}.tiles.push('${piston_tile_id}');
+					invoke('${app_js_namespace}.renderMarkdown', window, '${piston_tile_id}');
+				});
         	]]>
       	</script>
 	</plugin:body>
