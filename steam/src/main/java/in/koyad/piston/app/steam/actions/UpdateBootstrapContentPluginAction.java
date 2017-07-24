@@ -17,6 +17,7 @@ package in.koyad.piston.app.steam.actions;
 
 import in.koyad.piston.app.api.annotation.AnnoPluginAction;
 import in.koyad.piston.app.api.model.Request;
+import in.koyad.piston.app.api.model.Response;
 import in.koyad.piston.app.api.plugin.BasePluginAction;
 import in.koyad.piston.app.steam.forms.ContentPluginForm;
 import in.koyad.piston.app.steam.model.SteamModelCache;
@@ -41,7 +42,7 @@ public class UpdateBootstrapContentPluginAction extends BasePluginAction {
 	private static final LogUtil LOGGER = LogUtil.getLogger(UpdateBootstrapContentPluginAction.class);
 	
 	@Override
-	public String execute(Request req) throws FrameworkException {
+	public String execute(Request req, Response resp) throws FrameworkException {
 		LOGGER.enterMethod("execute");
 
 		ContentPluginForm form = null;

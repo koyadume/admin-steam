@@ -19,6 +19,7 @@ import com.google.common.html.HtmlEscapers;
 
 import in.koyad.piston.app.api.annotation.AnnoPluginAction;
 import in.koyad.piston.app.api.model.Request;
+import in.koyad.piston.app.api.model.Response;
 import in.koyad.piston.app.api.plugin.BasePluginAction;
 import in.koyad.piston.app.steam.model.SteamModelCache;
 import in.koyad.piston.common.basic.exception.FrameworkException;
@@ -35,7 +36,7 @@ public class GetMarkdownContentPluginAction extends BasePluginAction {
 	private static final LogUtil LOGGER = LogUtil.getLogger(GetMarkdownContentPluginAction.class);
 	
 	@Override
-	public String execute(Request req) throws FrameworkException {
+	public String execute(Request req, Response resp) throws FrameworkException {
 		LOGGER.enterMethod("execute");
 		
 		String content = SteamModelCache.contents.get(TileUtil.getTileId());
